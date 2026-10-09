@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Atelier — Inner Frame Vision</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #0a0a07;
+  color: #b59662;
+  font-family: Georgia, serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.atelier {
+  width: 90%;
+  max-width: 460px;
+  padding: 60px 35px;
+  border: 1px solid #514027;
+  background: #0d0c09;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: normal;
+  letter-spacing: 7px;
+  margin: 0 0 25px;
+}
+
+.subtitle {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #806a48;
+  margin-bottom: 45px;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  background: transparent;
+  border: 1px solid #514027;
+  color: #c5a675;
+  font-family: Georgia, serif;
+  text-align: center;
+  letter-spacing: 2px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #b59662;
+}
+
+button {
+  margin-top: 25px;
+  padding: 13px 45px;
+  background: transparent;
+  border: 1px solid #806a48;
+  color: #b59662;
+  font-family: Georgia, serif;
+  letter-spacing: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #20190f;
+  border-color: #c5a675;
+}
+
+.message {
+  min-height: 20px;
+  margin-top: 25px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #806a48;
+}
+
+.back {
+  display: block;
+  margin-top: 35px;
+  color: #806a48;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
+.back:hover {
+  color: #c5a675;
+}
+</style>
+</head>
+
+<body>
+
+<div class="atelier">
+
+  <h1>ATELIER</h1>
+
+  <div class="subtitle">
+    INNER FRAME VISION
+  </div>
+
+  <form id="accessForm">
+
+    <input
+      type="password"
+      id="password"
+      placeholder="ACCESS KEY"
+      autocomplete="off"
+      required
+    >
+
+    <button type="submit">ENTER</button>
+
+  </form>
+
+  <div class="message" id="message"></div>
+
+  <a href="scriptorium.html" class="back">
+    ← RETURN TO SCRIPTORIUM
+  </a>
+
+</div>
+
+<script>
+document.getElementById("accessForm")
+  .addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    document.getElementById("message").textContent =
+      "PRIVATE ATELIER — ACCESS NOT YET AVAILABLE";
+
+    document.getElementById("password").value = "";
+
+  });
+</script>
+
+</body>
+</html>
