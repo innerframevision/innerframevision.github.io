@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Manifestos — Inner Frame Vision</title>
+
+<meta name="description"
+content="The Manifestos of Inner Frame Vision — Atelier Scriptorium.">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    min-height: 100%;
+    background: #050505;
+    color: #b8924f;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* NAVIGATION */
+
+.topbar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 12px 16px;
+    background: #17130e;
+    border-bottom: 1px solid #9b7843;
+}
+
+.topbar a {
+    color: #e3c794;
+    text-decoration: none;
+    border: 1px solid #9b7843;
+    padding: 10px 18px;
+    transition: background 0.3s ease;
+}
+
+.topbar a:hover {
+    background: #352919;
+}
+
+/* MANIFESTOS BOOK */
+
+.book {
+    width: 90vw;
+    max-width: 900px;
+    margin: 45px auto 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.book img {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 0 30px rgba(0,0,0,0.75);
+}
+
+/* PAGE CONTROLS */
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.controls button {
+    background: #17130e;
+    color: #e3c794;
+    border: 1px solid #9b7843;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.controls button:hover {
+    background: #352919;
+}
+
+.controls button:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+#pageNumber {
+    min-width: 80px;
+    text-align: center;
+    color: #b8924f;
+    letter-spacing: 2px;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .book {
+        width: 96vw;
+        margin-top: 25px;
+    }
+
+    .controls {
+        gap: 12px;
+    }
+
+    .controls button {
+        padding: 9px 15px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACK TO SCRIPTORIUM -->
+
+<nav class="topbar">
+
+    <a href="scriptorium.html">
+        ← SCRIPTORIUM
+    </a>
+
+</nav>
+
+<!-- MANIFESTOS BOOK -->
+
+<main class="book">
+
+    <img
+        id="bookPage"
+        src="inner-frame-manifestos.001.jpeg"
+        alt="Inner Frame Vision Manifestos — Page 1"
+    >
+
+</main>
+
+<!-- PAGE NAVIGATION -->
+
+<div class="controls">
+
+    <button
+        id="previousButton"
+        onclick="previousPage()"
+        aria-label="Previous page">
+        ←
+    </button>
+
+    <div id="pageNumber" aria-live="polite">
+        1 / 30
+    </div>
+
+    <button
+        id="nextButton"
+        onclick="nextPage()"
+        aria-label="Next page">
+        →
+    </button>
+
+</div>
+
+<script>
+
+/* BOOK SETTINGS */
+
+let currentPage = 1;
+
+const totalPages = 30;
+
+/* DISPLAY PAGE */
+
+function showPage() {
+
+    const number = String(currentPage).padStart(3, '0');
+
+    const bookPage = document.getElementById('bookPage');
+
+    bookPage.src =
+        'inner-frame-manifestos.' + number + '.jpeg';
+
+    bookPage.alt =
+        'Inner Frame Vision Manifestos — Page ' + currentPage;
+
+    document.getElementById('pageNumber').textContent =
+        currentPage + ' / ' + totalPages;
+
+    document.getElementById('previousButton').disabled =
+        currentPage === 1;
+
+    document.getElementById('nextButton').disabled =
+        currentPage === totalPages;
+
+}
+
+/* NEXT PAGE */
+
+function nextPage() {
+
+    if (currentPage < totalPages) {
+
+        currentPage++;
+
+        showPage();
+
+    }
+
+}
+
+/* PREVIOUS PAGE */
+
+function previousPage() {
+
+    if (currentPage > 1) {
+
+        currentPage--;
+
+        showPage();
+
+    }
+
+}
+
+/* KEYBOARD NAVIGATION */
+
+document.addEventListener('keydown', function(event) {
+
+    if (event.key === 'ArrowRight') {
+        nextPage();
+    }
+
+    if (event.key === 'ArrowLeft') {
+        previousPage();
+    }
+
+});
+
+/* INITIALIZE BOOK */
+
+showPage();
+
+</script>
+
+</body>
+</html>
