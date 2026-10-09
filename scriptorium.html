@@ -22,8 +22,8 @@ html, body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 30px 15px;
+  align-items: flex-start;
+  padding: 0;
 }
 
 .artwork {
@@ -59,9 +59,13 @@ html, body {
 }
 .entrance:hover,
 .entrance:focus-visible {
-  box-shadow: none;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 225, 150, 0.22) 0%,
+    rgba(255, 195, 90, 0.08) 45%,
+    transparent 75%
+  );
 }
-
 .entrance:focus-visible {
   outline: 2px solid #e6bb72;
   outline-offset: 3px;
